@@ -5,7 +5,7 @@ import 'package:e_commerse/features/home%20screen/category/category_states.dart'
 import 'package:e_commerse/features/home%20screen/custom_category.dart';
 import 'package:e_commerse/features/home%20screen/products/custom_product.dart';
 import 'package:e_commerse/features/home%20screen/products/product_cubit.dart';
-import 'package:e_commerse/features/home%20screen/products/product_model.dart';
+import 'package:e_commerse/models/product_model.dart';
 import 'package:e_commerse/features/home%20screen/products/product_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -88,6 +89,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           return CustomCategory(
                             categoryModel: state.successCtegory[index],
+                            index: index,
+                            selectedIndex: selectedIndex,
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+
+                              if (state.successCtegory[index].id == 0) {
+                                context.read<ProductCubit>().products();
+                              } else {
+                                context
+                                    .read<ProductCubit>()
+                                    .getProductsByCategory(
+                                      state.successCtegory[index].id ?? 0,
+                                    );
+                              }
+                            },
                           );
                         },
                       ),

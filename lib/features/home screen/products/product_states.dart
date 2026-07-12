@@ -1,4 +1,4 @@
-import 'package:e_commerse/features/home%20screen/products/product_model.dart';
+import 'package:e_commerse/models/product_model.dart';
 
 abstract class ProductStates {}
 

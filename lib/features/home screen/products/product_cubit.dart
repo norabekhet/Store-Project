@@ -1,4 +1,4 @@
-import 'package:e_commerse/features/home%20screen/products/producr_remote_date_source.dart';
+import 'package:e_commerse/features/home%20screen/products/remote_date_source.dart';
 import 'package:e_commerse/features/home%20screen/products/product_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,5 +17,19 @@ class ProductCubit extends Cubit<ProductStates> {
         emit(failureProductState());
       },
     );
+  }
+
+  Future<void> getProductsByCategory(int categoryId) async {
+    emit(loadingProductState());
+
+    try {
+      final products = await producrRemoteDateSource.getProductsByCategory(
+        categoryId,
+      );
+
+      emit(successProductState(successProduct: products));
+    } catch (e) {
+      emit(failureProductState());
+    }
   }
 }

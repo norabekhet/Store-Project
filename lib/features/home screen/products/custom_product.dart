@@ -1,5 +1,5 @@
 import 'package:e_commerse/features/details/details_screen.dart';
-import 'package:e_commerse/features/home%20screen/products/product_model.dart';
+import 'package:e_commerse/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomProduct extends StatefulWidget {
@@ -34,7 +34,7 @@ class _CustomProductState extends State<CustomProduct> {
               child: ClipRRect(
                 borderRadius: BorderRadiusGeometry.circular(12),
                 child: Image.network(
-                  widget.productModel.imagePath,
+                  widget.productModel.images[0],
                   fit: BoxFit.cover,
                   width: double.infinity,
                   errorBuilder: (context, error, stackTrace) {
@@ -47,11 +47,11 @@ class _CustomProductState extends State<CustomProduct> {
               ),
             ),
             Text(
-              widget.productModel.productName,
+              widget.productModel.title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            Text(widget.productModel.price),
+            Text("\$${widget.productModel.price}"),
           ],
         ),
       ),

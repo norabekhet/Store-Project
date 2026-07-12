@@ -1,5 +1,6 @@
 import 'package:e_commerse/core/helpers/app_colors.dart';
-import 'package:e_commerse/features/home%20screen/products/product_model.dart';
+import 'package:e_commerse/features/cart/cart_screen.dart';
+import 'package:e_commerse/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -41,7 +42,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 child: Image.network(
-                  widget.productModel.imagePath,
+                  widget.productModel.images[0],
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: 275,
@@ -56,7 +57,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.productModel.productName,
+                          widget.productModel.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -89,7 +90,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
               SizedBox(height: 13),
               Text(
-                "Culpa aliquam consequuntur veritatis at consequuntur praesentium beatae temporibus nobis. Velit dolorem facilis neque autem. Itaque voluptatem expedita qui eveniet id veritatis eaque. Blanditiis quia placeat nemo. Nobis laudantium nesciunt perspiciatis sit eligendi.",
+                widget.productModel.description ?? "",
                 style: TextStyle(color: Colors.grey.shade500),
               ),
               Spacer(),
@@ -107,7 +108,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return CartScreen();
+                            },
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xff3B71CA),
                         shape: RoundedRectangleBorder(

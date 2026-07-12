@@ -1,4 +1,4 @@
-import 'package:e_commerse/features/home%20screen/category/category_model.dart';
+import 'package:e_commerse/models/category_model.dart';
 
 abstract class CategoryStates {}
 
