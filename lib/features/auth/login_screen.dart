@@ -7,6 +7,7 @@ import 'package:e_commerse/features/auth/login_cubit.dart';
 import 'package:e_commerse/features/auth/login_state.dart';
 import 'package:e_commerse/features/auth/sign_up.dart';
 import 'package:e_commerse/features/home%20screen/home_screen.dart';
+import 'package:e_commerse/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,14 +43,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   type: AnimatedSnackBarType.success,
                   context: context,
                 );
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (_) => HomeScreen()),
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => MainScreen()),
                 );
               }
             },
             builder: (context, state) {
               final cubit = context.read<LoginCubit>();
+              if (state is loginLoading) {
+                return Center(
+                  child: CircularProgressIndicator(color: AppColors.primary),
+                );
+              }
               return Padding(
                 padding: EdgeInsets.all(29),
                 child: Column(

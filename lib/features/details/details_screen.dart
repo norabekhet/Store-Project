@@ -1,4 +1,6 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:e_commerse/core/helpers/app_colors.dart';
+import 'package:e_commerse/core/helpers/app_toast.dart';
 import 'package:e_commerse/features/cart/cart_screen.dart';
 import 'package:e_commerse/models/product_model.dart';
 import 'package:flutter/material.dart';
@@ -109,12 +111,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return CartScreen();
-                            },
-                          ),
+                        showSnackBar(
+                          msg: 'Added to cart',
+                          type: AnimatedSnackBarType.success,
+                          context: context,
                         );
                       },
                       style: ElevatedButton.styleFrom(

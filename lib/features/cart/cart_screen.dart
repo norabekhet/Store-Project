@@ -1,6 +1,7 @@
 import 'package:e_commerse/core/helpers/app_colors.dart';
 import 'package:e_commerse/features/cart/cart_cubit.dart';
 import 'package:e_commerse/features/cart/cart_item_widget.dart';
+import 'package:e_commerse/main_screen.dart';
 import 'package:e_commerse/models/cart_model.dart';
 import 'package:e_commerse/features/cart/cart_price_row.dart';
 import 'package:e_commerse/features/cart/cart_states.dart';
@@ -48,7 +49,14 @@ class _CartScreenState extends State<CartScreen> {
                           children: [
                             IconButton(
                               onPressed: () {
-                                Navigator.pop(context);
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return MainScreen();
+                                    },
+                                  ),
+                                );
                               },
                               icon: const Icon(Icons.arrow_back),
                             ),
@@ -108,11 +116,7 @@ class _CartScreenState extends State<CartScreen> {
 
                             const Divider(height: 30),
 
-                            CartPriceRow(
-                              title: "Total",
-                              value: cubit.total,
-                              isBold: true,
-                            ),
+                            CartPriceRow(title: "Total", value: cubit.total),
 
                             const SizedBox(height: 20),
 

@@ -4,23 +4,6 @@ import 'package:e_commerse/features/cart/remote_data_source.dart';
 import 'package:e_commerse/features/home%20screen/products/product_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// class CartCubit extends Cubit<CartStates> {
-//   CartCubit() : super(initialcart());
-
-//   RemoteDataSource remoteDataSource = RemoteDataSource();
-
-//   Future<void> carts() async {
-//     emit(loadingcart());
-//     await remoteDataSource.getcarts().then(
-//       (val) {
-//         emit(successcart(succesList: val));
-//       },
-//       onError: (Error) {
-//         emit(failurecart());
-//       },
-//     );
-//   }
-// }
 class CartCubit extends Cubit<CartStates> {
   CartCubit() : super(initialcart());
 

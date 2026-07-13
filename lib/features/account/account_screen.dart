@@ -1,20 +1,35 @@
 import 'package:e_commerse/core/helpers/app_colors.dart';
 import 'package:e_commerse/features/account/custom_profile_item.dart';
 import 'package:e_commerse/features/account/profile_item_model.dart';
+import 'package:e_commerse/features/location/location_screen.dart';
+import 'package:e_commerse/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
   AccountScreen({super.key});
-  List<ProfileItemModel> MyIcons = [
-    ProfileItemModel(title: "My Orders", icon: Icons.gif_box),
-    ProfileItemModel(title: "My Details", icon: Icons.person),
-    ProfileItemModel(title: "Address Book", icon: Icons.home),
-    ProfileItemModel(title: "FAQs", icon: Icons.question_mark_rounded),
-    ProfileItemModel(title: "Help Center", icon: Icons.headset_mic_outlined),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    List<ProfileItemModel> MyIcons = [
+      ProfileItemModel(title: "My Orders", icon: Icons.gif_box),
+      ProfileItemModel(title: "My Details", icon: Icons.person),
+      ProfileItemModel(
+        title: "Address Book",
+        icon: Icons.home,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return LocationScreen();
+              },
+            ),
+          );
+        },
+      ),
+      ProfileItemModel(title: "FAQs", icon: Icons.question_mark_rounded),
+      ProfileItemModel(title: "Help Center", icon: Icons.headset_mic_outlined),
+    ];
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,
@@ -24,13 +39,20 @@ class AccountScreen extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MainScreen();
+                        },
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.arrow_back),
                 ),
                 const Expanded(
                   child: Text(
-                    "My Cart",
+                    "Account",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
@@ -44,9 +66,9 @@ class AccountScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   if (index == MyIcons.length) {
                     return Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: EdgeInsets.all(20),
                       child: Row(
-                        children: const [
+                        children: [
                           Icon(Icons.logout, color: Colors.red),
                           SizedBox(width: 8),
                           Text(
@@ -67,6 +89,7 @@ class AccountScreen extends StatelessWidget {
                             CustomProfileItem(
                               icon: MyIcons[index].icon,
                               text: MyIcons[index].title,
+                              onPressed: MyIcons[index].onPressed,
                             ),
                             const Divider(
                               thickness: 8,
@@ -78,6 +101,7 @@ class AccountScreen extends StatelessWidget {
                       : CustomProfileItem(
                           icon: MyIcons[index].icon,
                           text: MyIcons[index].title,
+                          onPressed: MyIcons[index].onPressed,
                         );
                 },
               ),

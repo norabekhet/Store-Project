@@ -17,9 +17,9 @@ class _LocationScreenState extends State<LocationScreen> {
       child: BlocProvider(
         create: (context) => LocationCubit()..getlocation(),
         child: Scaffold(
-          backgroundColor: const Color(0xffF5F5F5),
+          backgroundColor: Color(0xffF5F5F5),
           body: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -29,11 +29,11 @@ class _LocationScreenState extends State<LocationScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: const Icon(Icons.arrow_back),
+                      icon: Icon(Icons.arrow_back),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        "My Cart",
+                        "Location",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 24,
@@ -41,14 +41,16 @@ class _LocationScreenState extends State<LocationScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 48),
+                    SizedBox(width: 48),
                   ],
                 ),
                 Divider(),
+                SizedBox(height: 20),
                 Text(
                   "Saved Address",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 14),
                 BlocBuilder<LocationCubit, LocationStates>(
                   builder: (context, state) {
                     if (state is loadinglocation) {

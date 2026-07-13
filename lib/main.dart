@@ -19,16 +19,6 @@ class E_commerce extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: //AddScreen(),
-      MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (_) => ProductCubit()),
-          BlocProvider(create: (context) => CategoryCubit()),
-        ],
-        child: MainScreen(),
-      ),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen());
   }
 }

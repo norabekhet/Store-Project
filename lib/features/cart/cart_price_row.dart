@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CartPriceRow extends StatelessWidget {
-  const CartPriceRow({
-    super.key,
-    required this.title,
-    required this.value,
-    this.isBold = false,
-  });
+  const CartPriceRow({super.key, required this.title, required this.value});
 
   final String title;
   final double value;
-  final bool isBold;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +15,13 @@ class CartPriceRow extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 18,
-            fontWeight: isBold ? FontWeight.bold : FontWeight.w500,
+            color: Color(0xff808080),
+            fontWeight: FontWeight.w400,
           ),
         ),
         Text(
           "\$ ${value.toStringAsFixed(2)}",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: isBold ? FontWeight.bold : FontWeight.w700,
-          ),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         ),
       ],
     );

@@ -35,8 +35,6 @@ class CartItemWidget extends StatelessWidget {
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
-                    width: 90,
-                    height: 90,
                     color: Colors.grey.shade200,
                     child: const Icon(Icons.image),
                   );
@@ -55,36 +53,33 @@ class CartItemWidget extends StatelessWidget {
                       Expanded(
                         child: Text(
                           cartModel.title,
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon: const Icon(
-                          Icons.delete_outline,
-                          color: Colors.red,
-                        ),
+                        icon: Icon(Icons.delete_outline, color: Colors.red),
                       ),
                     ],
                   ),
 
                   Text(
                     cartModel.subtitle,
-                    style: const TextStyle(color: Colors.grey, fontSize: 14),
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
 
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "\$${(cartModel.price * cartModel.quantity).toStringAsFixed(2)}",
-                        style: const TextStyle(
-                          fontSize: 22,
+                        style: TextStyle(
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -92,8 +87,8 @@ class CartItemWidget extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            width: 40,
-                            height: 40,
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade300),
                               borderRadius: BorderRadius.circular(8),
@@ -122,8 +117,8 @@ class CartItemWidget extends StatelessWidget {
                           SizedBox(width: 12),
 
                           Container(
-                            width: 40,
-                            height: 40,
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade300),
                               borderRadius: BorderRadius.circular(8),
