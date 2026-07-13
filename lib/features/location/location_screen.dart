@@ -1,6 +1,6 @@
 import 'package:e_commerse/features/location/custom_address.dart';
 import 'package:e_commerse/features/location/location_cubit.dart';
-import 'package:e_commerse/features/location/location_model.dart';
+import 'package:e_commerse/models/location_model.dart';
 import 'package:e_commerse/features/location/location_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

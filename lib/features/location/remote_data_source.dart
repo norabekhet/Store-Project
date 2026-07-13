@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:e_commerse/features/location/location_model.dart';
+import 'package:e_commerse/models/location_model.dart';
 
 class RemoteDataSource {
   final Dio dio = Dio();

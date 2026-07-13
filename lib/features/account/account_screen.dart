@@ -1,5 +1,6 @@
 import 'package:e_commerse/core/helpers/app_colors.dart';
 import 'package:e_commerse/features/account/custom_profile_item.dart';
+import 'package:e_commerse/features/account/logout.dart';
 import 'package:e_commerse/features/account/profile_item_model.dart';
 import 'package:e_commerse/features/location/location_screen.dart';
 import 'package:e_commerse/main_screen.dart';
@@ -67,18 +68,28 @@ class AccountScreen extends StatelessWidget {
                   if (index == MyIcons.length) {
                     return Padding(
                       padding: EdgeInsets.all(20),
-                      child: Row(
-                        children: [
-                          Icon(Icons.logout, color: Colors.red),
-                          SizedBox(width: 8),
-                          Text(
-                            "Logout",
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
+                      child: InkWell(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Logout();
+                            },
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.logout, color: Colors.red),
+                            SizedBox(width: 8),
+                            Text(
+                              "Logout",
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   }
