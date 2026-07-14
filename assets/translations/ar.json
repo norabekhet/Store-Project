@@ -1,0 +1,64 @@
+{
+  "login_title": "سجل الدخول إلى حسابك",
+  "login_subtitle": "سعداء برؤيتك مرة أخرى.",
+
+  "username": "اسم المستخدم",
+  "password": "كلمة المرور",
+
+  "email_hint": "أدخل بريدك الإلكتروني",
+  "password_hint": "أدخل كلمة المرور",
+
+  "sign_in": "تسجيل الدخول",
+
+  "no_account": "ليس لديك حساب؟",
+  "join": "إنشاء حساب",
+
+  "login_success": "تم تسجيل الدخول بنجاح",
+  "login_failed": "فشل تسجيل الدخول",
+
+  "discover": "اكتشف",
+  "search_hint": "ابحث عن الملابس...",
+
+
+  "my_cart": "سلة التسوق",
+  "sub_total": "المجموع ",
+  "vat": "ضريبة القيمة المضافة",
+  "shipping": "الشحن",
+  "total": "الإجمالي",
+  "checkout": "الانتقال إلى الدفع",
+  "error": "حدث خطأ ما",
+
+  "account": "الحساب",
+  "my_orders": "طلباتي",
+  "my_details": "بياناتي",
+  "change_lang": "تغيير اللغة",
+  "address_book": "العناوين",
+  "faqs": "الأسئلة الشائعة",
+  "help_center": "مركز المساعدة",
+  "logout": "تسجيل الخروج",
+
+  "logout_title": "تسجيل الخروج؟",
+  "logout_message": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "yes_logout": "نعم، تسجيل الخروج",
+  "no_cancel": "لا، إلغاء",
+
+  "location":"الموقع",
+  "saved Address":"العناوين المحفوظة",
+
+  "reviews": "تقييم",
+  "add_to_cart": "أضف إلى السلة",
+  "added_to_cart": "تمت الإضافة إلى السلة",
+
+  "signup_title": "إنشاء حساب",
+  "signup_subtitle": "أنشئ حسابًا للبدء.",
+
+  "full_name": "الاسم بالكامل",
+  "full_name_hint": "أدخل اسمك بالكامل",
+
+  "confirm_password": "تأكيد كلمة المرور",
+
+  "sign_up": "إنشاء حساب",
+
+  "already_have_account": "لديك حساب بالفعل؟",
+  "log_in": "تسجيل الدخول"
+}

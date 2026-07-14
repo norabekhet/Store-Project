@@ -2,6 +2,7 @@ import 'package:e_commerse/features/location/custom_address.dart';
 import 'package:e_commerse/features/location/location_cubit.dart';
 import 'package:e_commerse/models/location_model.dart';
 import 'package:e_commerse/features/location/location_states.dart';
+import 'package:easy_localization/easy_localization.dart' as location;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +34,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                     Expanded(
                       child: Text(
-                        "Location",
+                        "location".tr(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 24,
@@ -47,7 +48,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 Divider(),
                 SizedBox(height: 20),
                 Text(
-                  "Saved Address",
+                  "saved Address".tr(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 14),

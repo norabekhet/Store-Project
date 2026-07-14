@@ -10,6 +10,8 @@ import 'package:e_commerse/features/home%20screen/products/product_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
@@ -19,14 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  @override
-  // void initState() {
-  //   super.initState();
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     context.read<ProductCubit>().products();
-  //     context.read<CategoryCubit>().categories();
-  //   });
-  // }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -43,25 +38,26 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'discover',
-                  style: TextStyle(
+                  "discover".tr(),
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
                     color: Color(0xff1A1D1E),
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
+
                 Row(
-                  spacing: 10,
                   children: [
                     Expanded(
                       child: AppField(
                         controller: TextEditingController(),
                         obscureText: false,
-                        hint: "Search for clothes...",
-                        prefixIcon: Icon(Icons.search),
+                        hint: "search_hint".tr(),
+                        prefixIcon: const Icon(Icons.search),
                       ),
                     ),
+                    const SizedBox(width: 10),
                     IconButton(
                       onPressed: () {},
                       icon: Icon(
@@ -69,26 +65,28 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppColors.white,
                       ),
                       style: IconButton.styleFrom(
-                        minimumSize: Size(45, 45),
+                        minimumSize: const Size(45, 45),
                         backgroundColor: AppColors.primary,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadiusGeometry.circular(12),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),
                   ],
                 ),
+
                 BlocBuilder<CategoryCubit, CategoryStates>(
                   builder: (context, state) {
                     if (state is categoriesLoadingState) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     }
+
                     if (state is categoriessuccessState) {
                       return SizedBox(
                         height: 50,
                         child: ListView.builder(
-                          itemCount: state.successCtegory.length,
                           scrollDirection: Axis.horizontal,
+                          itemCount: state.successCtegory.length,
                           itemBuilder: (context, index) {
                             return CustomCategory(
                               categoryModel: state.successCtegory[index],
@@ -113,24 +111,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       );
-                    } else if (state is categoriesFailState) {
-                      return Text("Error");
-                    } else {
-                      return SizedBox();
                     }
+
+                    if (state is categoriesFailState) {
+                      return Center(child: Text("error".tr()));
+                    }
+
+                    return const SizedBox();
                   },
                 ),
+
                 Expanded(
                   child: BlocBuilder<ProductCubit, ProductStates>(
                     builder: (context, state) {
                       if (state is loadingProductState) {
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       }
+
                       if (state is successProductState) {
                         return GridView.builder(
                           itemCount: state.successProduct.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                               ),
                           itemBuilder: (context, index) {
@@ -140,11 +142,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         );
                       }
+
                       if (state is failureProductState) {
-                        return Center(child: Text("error"));
-                      } else {
-                        return SizedBox();
+                        return Center(child: Text("error".tr()));
                       }
+
+                      return const SizedBox();
                     },
                   ),
                 ),

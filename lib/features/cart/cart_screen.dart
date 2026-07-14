@@ -8,6 +8,8 @@ import 'package:e_commerse/features/cart/cart_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -32,7 +34,7 @@ class _CartScreenState extends State<CartScreen> {
               }
 
               if (state is failurecart) {
-                return const Center(child: Text("Error"));
+                return Center(child: Text("error".tr()));
               }
 
               if (state is successcart) {
@@ -60,11 +62,11 @@ class _CartScreenState extends State<CartScreen> {
                               },
                               icon: const Icon(Icons.arrow_back),
                             ),
-                            const Expanded(
+                            Expanded(
                               child: Text(
-                                "My Cart",
+                                "my_cart".tr(),
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -99,24 +101,27 @@ class _CartScreenState extends State<CartScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             CartPriceRow(
-                              title: "Sub-total",
+                              title: "sub_total".tr(),
                               value: cubit.subTotal,
                             ),
 
                             const SizedBox(height: 12),
 
-                            CartPriceRow(title: "VAT", value: cubit.vat),
+                            CartPriceRow(title: "vat".tr(), value: cubit.vat),
 
                             const SizedBox(height: 12),
 
                             CartPriceRow(
-                              title: "Shipping",
+                              title: "shipping".tr(),
                               value: cubit.shipping,
                             ),
 
                             const Divider(height: 30),
 
-                            CartPriceRow(title: "Total", value: cubit.total),
+                            CartPriceRow(
+                              title: "total".tr(),
+                              value: cubit.total,
+                            ),
 
                             const SizedBox(height: 20),
 
@@ -131,9 +136,9 @@ class _CartScreenState extends State<CartScreen> {
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                 ),
-                                child: const Text(
-                                  "Go To Checkout",
-                                  style: TextStyle(
+                                child: Text(
+                                  "checkout".tr(),
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                   ),

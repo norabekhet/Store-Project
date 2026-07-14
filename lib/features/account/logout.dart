@@ -2,6 +2,8 @@ import 'package:e_commerse/features/account/account_screen.dart';
 import 'package:e_commerse/features/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+
 class Logout extends StatelessWidget {
   const Logout({super.key});
 
@@ -11,11 +13,15 @@ class Logout extends StatelessWidget {
       backgroundColor: Colors.white,
       title: Column(
         children: [
-          Icon(Icons.warning_amber, color: Colors.red, size: 55),
-          Text("Logout?", style: TextStyle(fontWeight: FontWeight.w700)),
+          const Icon(Icons.warning_amber, color: Colors.red, size: 55),
           Text(
-            "Are you sure you want to logout?",
-            style: TextStyle(
+            "logout_title".tr(),
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          Text(
+            "logout_message".tr(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
               fontWeight: FontWeight.w400,
               color: Colors.grey,
               fontSize: 16,
@@ -38,16 +44,12 @@ class Logout extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginScreen();
-                      },
-                    ),
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
                   );
                 },
                 child: Text(
-                  "Yes,Logout",
-                  style: TextStyle(color: Colors.white),
+                  "yes_logout".tr(),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             ),
@@ -63,7 +65,10 @@ class Logout extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("No,cancel", style: TextStyle(color: Colors.white)),
+                child: Text(
+                  "no_cancel".tr(),
+                  style: const TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ],

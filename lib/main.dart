@@ -1,17 +1,19 @@
-import 'package:e_commerse/features/account/account_screen.dart';
-import 'package:e_commerse/features/auth/login_screen.dart';
-import 'package:e_commerse/features/auth/sign_up.dart';
-import 'package:e_commerse/features/cart/cart_screen.dart';
-import 'package:e_commerse/features/home%20screen/category/category_cubit.dart';
-import 'package:e_commerse/features/home%20screen/home_screen.dart';
-import 'package:e_commerse/features/home%20screen/products/product_cubit.dart';
-import 'package:e_commerse/features/location/location_screen.dart';
-import 'package:e_commerse/main_screen.dart';
+import 'package:e_commerse/features/splash.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main(List<String> args) {
-  runApp(E_commerce());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('ar')],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en', 'ar'),
+      child: E_commerce(),
+    ),
+  );
 }
 
 class E_commerce extends StatelessWidget {
@@ -19,6 +21,12 @@ class E_commerce extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen());
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      debugShowCheckedModeBanner: false,
+      home: Splash(),
+    );
   }
 }

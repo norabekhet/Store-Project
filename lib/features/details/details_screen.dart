@@ -5,8 +5,11 @@ import 'package:e_commerse/features/cart/cart_screen.dart';
 import 'package:e_commerse/models/product_model.dart';
 import 'package:flutter/material.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key, required this.productModel});
+
   final ProductModel productModel;
 
   @override
@@ -23,8 +26,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
           backgroundColor: AppColors.white,
           centerTitle: true,
           title: Text(
-            'discover',
-            style: TextStyle(
+            "discover".tr(),
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w700,
               color: Color(0xff1A1D1E),
@@ -32,9 +35,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pop(context);
+              Navigator.of(context).pop();
             },
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
           ),
         ),
         body: Padding(
@@ -42,7 +45,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           child: Column(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
+                borderRadius: const BorderRadius.all(Radius.circular(15)),
                 child: Image.network(
                   widget.productModel.images[0],
                   fit: BoxFit.cover,
@@ -50,7 +53,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   height: 275,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -62,27 +66,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           widget.productModel.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        SizedBox(height: 13),
+                        const SizedBox(height: 13),
+
                         Row(
-                          spacing: 10,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star,
-                              color: const Color.fromARGB(255, 227, 147, 17),
+                              color: Color.fromARGB(255, 227, 147, 17),
                             ),
-                            Text(
+                            const SizedBox(width: 10),
+                            const Text(
                               "4.6",
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Text("( 20 Review)"),
+                            const SizedBox(width: 10),
+                            Text("(20 ${"reviews".tr()})"),
                           ],
                         ),
                       ],
@@ -90,43 +96,48 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 13),
+
+              const SizedBox(height: 13),
+
               Text(
                 widget.productModel.description ?? "",
                 style: TextStyle(color: Colors.grey.shade500),
               ),
-              Spacer(),
-              Divider(),
+
+              const Spacer(),
+              const Divider(),
+
               Row(
                 children: [
                   Text(
-                    '\$${widget.productModel.price}',
-                    style: TextStyle(
+                    "\$${widget.productModel.price}",
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
                       color: Color(0xff1A1D1E),
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
+
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
                         showSnackBar(
-                          msg: 'Added to cart',
+                          msg: "added_to_cart".tr(),
                           type: AnimatedSnackBarType.success,
                           context: context,
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff3B71CA),
+                        backgroundColor: const Color(0xff3B71CA),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                         elevation: 0,
                       ),
                       child: Text(
-                        'Add to cart',
-                        style: TextStyle(
+                        "add_to_cart".tr(),
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

@@ -8,6 +8,7 @@ import 'package:e_commerse/features/auth/login_state.dart';
 import 'package:e_commerse/features/auth/sign_up.dart';
 import 'package:e_commerse/features/home%20screen/home_screen.dart';
 import 'package:e_commerse/main_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,12 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   context: context,
                 );
               }
+
               if (state is loginSuccess) {
                 showSnackBar(
-                  msg: "login success",
+                  msg: "login_success".tr(),
                   type: AnimatedSnackBarType.success,
                   context: context,
                 );
+
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => MainScreen()),
                 );
@@ -50,60 +53,68 @@ class _LoginScreenState extends State<LoginScreen> {
             },
             builder: (context, state) {
               final cubit = context.read<LoginCubit>();
+
               if (state is loginLoading) {
                 return Center(
                   child: CircularProgressIndicator(color: AppColors.primary),
                 );
               }
+
               return Padding(
-                padding: EdgeInsets.all(29),
+                padding: const EdgeInsets.all(29),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Login to your account',
-                      style: TextStyle(
+                      "login_title".tr(),
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
                         color: Color(0xff1A1D1E),
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      "It's great to see you again.",
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      "login_subtitle".tr(),
+                      style: const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
 
                     Text(
-                      'User Name',
-                      style: TextStyle(
+                      "username".tr(),
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
+
                     AppField(
                       controller: cubit.userEmailController,
                       obscureText: false,
-                      hint: "Enter your email address",
+                      hint: "email_hint".tr(),
                     ),
-                    SizedBox(height: 20),
+
+                    const SizedBox(height: 20),
+
                     Text(
-                      'Password',
-                      style: TextStyle(
+                      "password".tr(),
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
+
                     AppPasswordField(
                       controller: cubit.userPasswordController,
-                      hint: "Enter your password",
+                      hint: "password_hint".tr(),
                     ),
-                    SizedBox(height: 32),
+
+                    const SizedBox(height: 32),
+
                     SizedBox(
                       width: double.infinity,
                       height: 52,
@@ -112,15 +123,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           cubit.login();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff3B71CA),
+                          backgroundColor: const Color(0xff3B71CA),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                           elevation: 0,
                         ),
                         child: Text(
-                          'Sign In',
-                          style: TextStyle(
+                          "sign_in".tr(),
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -128,11 +139,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    Spacer(),
+
+                    const Spacer(),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Don't have an account?"),
+                        Text("no_account".tr()),
                         TextButton(
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
@@ -142,15 +155,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) {
-                                  return SignUp();
-                                },
+                                builder: (context) => const SignUp(),
                               ),
                             );
                           },
                           child: Text(
-                            "join",
-                            style: TextStyle(
+                            "join".tr(),
+                            style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w700,
                             ),

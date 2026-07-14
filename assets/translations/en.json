@@ -1,0 +1,64 @@
+{
+  "login_title": "Login to your account",
+  "login_subtitle": "It's great to see you again.",
+
+  "username": "User Name",
+  "password": "Password",
+
+  "email_hint": "Enter your email address",
+  "password_hint": "Enter your password",
+
+  "sign_in": "Sign In",
+
+  "no_account": "Don't have an account?",
+  "join": "Join",
+
+  "login_success": "Login successful",
+  "login_failed": "Login failed",
+
+  "discover": "Discover",
+  "search_hint": "Search for clothes...",
+
+  "error": "Something went wrong",
+  "my_cart": "My Cart",
+  "sub_total": "Sub-total",
+  "vat": "VAT",
+  "shipping": "Shipping",
+  "total": "Total",
+  "checkout": "Go To Checkout",
+
+  "account": "Account",
+  "my_orders": "My Orders",
+  "my_details": "My Details",
+  "change_lang": "Change Language",
+  "address_book": "Address Book",
+  "faqs": "FAQs",
+  "help_center": "Help Center",
+  "logout": "Logout",
+
+  "logout_title": "Logout?",
+  "logout_message": "Are you sure you want to logout?",
+  "yes_logout": "Yes, Logout",
+  "no_cancel": "No, Cancel",
+
+  "location":"Location",
+  "saved Address":"saved_Address",
+ 
+  "reviews": "Reviews",
+  "add_to_cart": "Add to cart",
+  "added_to_cart": "Added to cart",
+
+  "signup_title": "Create your account",
+  "signup_subtitle": "Create an account to get started.",
+
+  "full_name": "Full Name",
+  "full_name_hint": "Enter your full name",
+
+  "confirm_password": "Confirm Password",
+
+  "sign_up": "Sign Up",
+
+  "already_have_account": "Already have an account?",
+  "log_in": "Log In"
+  
+}

@@ -4,33 +4,47 @@ import 'package:e_commerse/features/account/logout.dart';
 import 'package:e_commerse/features/account/profile_item_model.dart';
 import 'package:e_commerse/features/location/location_screen.dart';
 import 'package:e_commerse/main_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import 'package:easy_localization/easy_localization.dart';
 
 class AccountScreen extends StatelessWidget {
   AccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<ProfileItemModel> MyIcons = [
-      ProfileItemModel(title: "My Orders", icon: Icons.gif_box),
-      ProfileItemModel(title: "My Details", icon: Icons.person),
+    List<ProfileItemModel> myIcons = [
+      ProfileItemModel(title: "my_orders".tr(), icon: Icons.gif_box),
+      ProfileItemModel(title: "my_details".tr(), icon: Icons.person),
       ProfileItemModel(
-        title: "Address Book",
+        title: "change_lang".tr(),
+        icon: Icons.language,
+        onPressed: () {
+          if (context.locale.languageCode == 'en') {
+            context.setLocale(const Locale('ar'));
+          } else {
+            context.setLocale(const Locale('en'));
+          }
+        },
+      ),
+      ProfileItemModel(
+        title: "address_book".tr(),
         icon: Icons.home,
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) {
-                return LocationScreen();
-              },
-            ),
+            MaterialPageRoute(builder: (context) => LocationScreen()),
           );
         },
       ),
-      ProfileItemModel(title: "FAQs", icon: Icons.question_mark_rounded),
-      ProfileItemModel(title: "Help Center", icon: Icons.headset_mic_outlined),
+      ProfileItemModel(title: "faqs".tr(), icon: Icons.question_mark_rounded),
+      ProfileItemModel(
+        title: "help_center".tr(),
+        icon: Icons.headset_mic_outlined,
+      ),
     ];
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,
@@ -42,20 +56,19 @@ class AccountScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MainScreen();
-                        },
-                      ),
+                      MaterialPageRoute(builder: (context) => MainScreen()),
                     );
                   },
                   icon: const Icon(Icons.arrow_back),
                 ),
-                const Expanded(
+                Expanded(
                   child: Text(
-                    "Account",
+                    "account".tr(),
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 48),
@@ -63,27 +76,25 @@ class AccountScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: MyIcons.length + 1,
+                itemCount: myIcons.length + 1,
                 itemBuilder: (context, index) {
-                  if (index == MyIcons.length) {
+                  if (index == myIcons.length) {
                     return Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       child: InkWell(
                         onTap: () {
                           showDialog(
                             context: context,
-                            builder: (context) {
-                              return Logout();
-                            },
+                            builder: (context) => Logout(),
                           );
                         },
                         child: Row(
                           children: [
-                            Icon(Icons.logout, color: Colors.red),
-                            SizedBox(width: 8),
+                            const Icon(Icons.logout, color: Colors.red),
+                            const SizedBox(width: 8),
                             Text(
-                              "Logout",
-                              style: TextStyle(
+                              "logout".tr(),
+                              style: const TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -98,9 +109,9 @@ class AccountScreen extends StatelessWidget {
                       ? Column(
                           children: [
                             CustomProfileItem(
-                              icon: MyIcons[index].icon,
-                              text: MyIcons[index].title,
-                              onPressed: MyIcons[index].onPressed,
+                              icon: myIcons[index].icon,
+                              text: myIcons[index].title,
+                              onPressed: myIcons[index].onPressed,
                             ),
                             const Divider(
                               thickness: 8,
@@ -110,9 +121,9 @@ class AccountScreen extends StatelessWidget {
                           ],
                         )
                       : CustomProfileItem(
-                          icon: MyIcons[index].icon,
-                          text: MyIcons[index].title,
-                          onPressed: MyIcons[index].onPressed,
+                          icon: myIcons[index].icon,
+                          text: myIcons[index].title,
+                          onPressed: myIcons[index].onPressed,
                         );
                 },
               ),

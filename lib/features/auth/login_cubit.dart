@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerse/core/helpers/cache_helper.dart';
 import 'package:e_commerse/features/auth/login_state.dart';
 import 'package:e_commerse/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,10 @@ class LoginCubit extends Cubit<LoginState> {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         UserModel userModel = UserModel.fromjson(response.data);
+
+        if (userModel.token != null) {
+          CacheHelper.saveToken(userModel.token!);
+        }
 
         emit(loginSuccess());
       } else {
